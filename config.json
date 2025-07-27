@@ -62,17 +62,17 @@
     "title": "Professional Experience",
     "jobs": [
       {
-        "company": "Your Company Name",
-        "role": "Your Job Title",
-        "date": "Start Date - Present",
+        "company": "CGI",
+        "role": "Lead - Performance Engineering",
+        "date": "Mar 2025 - Present",
         "responsibilities": [
           "Add your key responsibilities and achievements here",
           "Include specific technologies you worked with",
           "Mention any notable projects or impact metrics",
           "Update this section with your actual work experience"
         ],
-        "logo": "assets/logos/Placeholder_Logo.png",
-        "logo_dark": "assets/logos/Placeholder_Logo.png"
+        "logo": "assets/logos/CGI_branded_professional-occasion_banner_03.png",
+        "logo_dark": "assets/logos/CGI_branded_professional-occasion_banner_03.png"
       }
     ]
   },
