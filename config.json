@@ -224,6 +224,24 @@
           "items": ["JProfiler", "VisualVM", "py-spy", "pprof"]
         }
       ]
+    },
+     "case_studies": {
+      "title": "Case Studies & Analyses",
+      "items": [
+        {
+          "title": "Optimizing E-commerce Checkout API",
+          "summary": "A deep dive into identifying and resolving a critical bottleneck in a high-traffic checkout service. The project involved profiling, query optimization, and implementing an asynchronous processing pattern.",
+          "results": [
+            "Reduced p95 latency from 2500ms to 400ms.",
+            "Increased transaction throughput by 300% during peak load.",
+            "Eliminated database lock contention issues."
+          ],
+          "link": {
+            "url": "#",
+            "text": "Read Full Analysis"
+          }
+        }
+      ]
     }
 }
 }
