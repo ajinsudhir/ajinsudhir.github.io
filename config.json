@@ -180,5 +180,50 @@
     "show_built_with": true,
     "built_with_text": "Built with ❤️ using vanilla JavaScript",
     "tagline": "Let's connect and build something amazing together!"
-  }
+  },
+   "performance_page": {
+    "seo": {
+      "title": "Ajin Sudhir - Performance Engineering Hub",
+      "description": "A showcase of performance engineering concepts, tools, and case studies by Ajin Sudhir.",
+      "keywords": "performance engineering, load testing, scalability, monitoring, SRE, Ajin Sudhir"
+    },
+    "header": {
+      "greeting": "Performance Engineering Hub",
+      "tagline": "Exploring the art and science of building fast, scalable, and reliable systems."
+    },
+    "intro": {
+      "title": "What is Performance Engineering?",
+      "paragraphs": [
+        "Performance Engineering is a discipline within systems engineering that focuses on ensuring a system will meet or exceed its performance requirements. It's not just about testing; it's a proactive process integrated throughout the entire software development lifecycle.",
+        "This hub is a collection of my notes, case studies, and thoughts on key concepts, tools, and methodologies in the world of performance."
+      ]
+    },
+    "concepts": {
+      "title": "Core Concepts",
+      "items": [
+        { "name": "Latency & Response Time", "description": "The time taken for a single transaction to be processed." },
+        { "name": "Throughput", "description": "The number of transactions a system can handle per unit of time (e.g., requests/second)." },
+        { "name": "Scalability", "description": "The ability of a system to handle a growing amount of work by adding resources." },
+        { "name": "Capacity Planning", "description": "The process of determining the production capacity needed by an organization to meet changing demands for its products." },
+        { "name": "Workload Modelling", "description": "Creating a representative model of user and system load to be used in performance tests." }
+      ]
+    },
+    "tools": {
+      "title": "Essential Tooling",
+      "categories": [
+        {
+          "name": "Load Generation",
+          "items": ["JMeter", "Gatling", "k6", "Locust"]
+        },
+        {
+          "name": "Monitoring & Observability",
+          "items": ["Prometheus", "Grafana", "Datadog", "New Relic", "OpenTelemetry"]
+        },
+        {
+          "name": "Profiling",
+          "items": ["JProfiler", "VisualVM", "py-spy", "pprof"]
+        }
+      ]
+    }
+}
 }
