@@ -25,6 +25,7 @@ export class SectionManager {
             experience: true,
             skills: true,
             github_projects: true,
+            blog: true,
             ...config.features
         };
         
@@ -34,6 +35,7 @@ export class SectionManager {
         this.toggleSection('experience', features.experience);
         this.toggleSection('skills', features.skills);
         this.toggleSection('projects-on-github', features.github_projects);
+        this.toggleSection('blog', features.blog);
         
         // Update sections that are enabled and have content
         if (features.about) {
@@ -50,6 +52,10 @@ export class SectionManager {
         
         if (features.skills) {
             this.updateSkillsSection(config);
+        }
+        
+        if (features.blog) {
+            this.updateBlogSection(config);
         }
         
         // Update "Projects on GitHub" section title from config if available
@@ -335,5 +341,60 @@ export class SectionManager {
         `;
         
         return categoryDiv;
+    }
+    // Update blog section dynamically
+    updateBlogSection(config) {
+        const blogSection = document.querySelector('.blog');
+        if (!blogSection) return;
+
+        const titleElement = blogSection.querySelector('h2');
+        if (titleElement) {
+            titleElement.textContent = this.configManager.getSectionTitle('blog');
+        }
+
+        const container = blogSection.querySelector('.blog-posts-container');
+        if (!container) return;
+
+        // Clear existing content
+        container.innerHTML = '';
+
+        const fragment = document.createDocumentFragment();
+
+        if (config.blog?.posts?.length) {
+            config.blog.posts.forEach(post => {
+                const postItem = this.createBlogPostItem(post);
+                fragment.appendChild(postItem);
+            });
+        } else {
+            // Show placeholder for empty blog
+            const emptyState = document.createElement('div');
+            emptyState.className = 'blog-post-item';
+            emptyState.innerHTML = `
+                <h3>My Thoughts Will Appear Here</h3>
+                <p class="date">Coming Soon</p>
+                <p class="excerpt">I'm getting ready to share my articles and tutorials. Add posts to the 'blog' section in your config.json to get started!</p>
+            `;
+            fragment.appendChild(emptyState);
+        }
+
+        container.appendChild(fragment);
+    }
+
+    // Create individual blog post item
+    createBlogPostItem(post) {
+        const postItem = document.createElement('a');
+        postItem.className = 'blog-post-item';
+        postItem.href = post.link || '#';
+        postItem.target = '_blank';
+        postItem.rel = 'noopener noreferrer';
+        postItem.setAttribute('aria-label', `Read more about ${post.title}`);
+
+        postItem.innerHTML = `
+            <h3>${post.title}</h3>
+            ${post.date ? `<p class="date">${post.date}</p>` : ''}
+            ${post.excerpt ? `<p class="excerpt">${post.excerpt}</p>` : ''}
+        `;
+
+        return postItem;
     }
 }
