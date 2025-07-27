@@ -143,9 +143,17 @@
         "key_metrics": [
           "User login and session management",
           "Product search and filtering",
-          "Shopping cart operations (add/remove/update)",
+          "Shopping cart operations",
           "Secure checkout and payment processing"
-        ]
+        ],
+        "chart_data": {
+          "title": "Response Time by Operation (ms)",
+          "type": "bar",
+          "labels": ["Login", "Search", "Add to Cart", "Checkout"],
+          "datasets": [
+            { "name": "Avg Response Time", "values": [150, 200, 180, 450] }
+          ]
+        }
       },
       {
         "name": "High-Traffic API Gateway",
@@ -157,7 +165,13 @@
           "Authentication and authorization (JWT/OAuth)",
           "Request routing and payload transformation",
           "Rate limiting and caching strategies"
-        ]
+        ],
+        "chart_data": {
+          "title": "Latency Distribution (ms)",
+          "type": "line",
+          "labels": ["p50", "p90", "p95", "p99", "p99.9"],
+          "datasets": [ { "name": "Latency", "values": [45, 80, 110, 150, 250] } ]
+        }
       }
     ]
   },
