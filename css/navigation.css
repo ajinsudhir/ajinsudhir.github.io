@@ -1,0 +1,43 @@
+/* css/navigation.css */
+
+.navigation-links {
+    margin-bottom: 4rem;
+}
+
+.navigation-links h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.nav-links-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+}
+
+.nav-link-card {
+    display: block;
+    background-color: var(--background-secondary);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.nav-link-card p {
+    color: var(--text-color-secondary);
+    line-height: 1.6;
+}
+
