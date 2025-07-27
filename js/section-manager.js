@@ -37,6 +37,7 @@ export class SectionManager {
         this.toggleSection('experience', features.experience);
         this.toggleSection('skills', features.skills);
         this.toggleSection('projects-on-github', features.github_projects);
+        this.toggleSection('navigation-links', features.navigation_links);
         this.toggleSection('blog', features.blog);
         this.toggleSection('performance-modelling', features.performance_modelling);
         
@@ -47,6 +48,9 @@ export class SectionManager {
         
         if (features.projects) {
             this.updateProjectsSection(config);
+        }
+        if (features.navigation_links) {
+            this.updateNavigationLinksSection(config);
         }
         
         if (features.experience) {
@@ -494,5 +498,36 @@ export class SectionManager {
                 }
             }
         });
+    }
+    // Update navigation links section
+    updateNavigationLinksSection(config) {
+        const section = document.querySelector('.navigation-links');
+        if (!section || !config.navigation_links) return;
+
+        const titleEl = section.querySelector('h2');
+        if (titleEl) {
+            titleEl.textContent = config.navigation_links.title || '';
+        }
+
+        const containerEl = section.querySelector('.nav-links-container');
+        if (!containerEl) return;
+
+        containerEl.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+
+        if (config.navigation_links.items?.length) {
+            config.navigation_links.items.forEach(item => {
+                const itemEl = document.createElement('a');
+                itemEl.className = 'nav-link-card';
+                itemEl.href = item.url;
+                itemEl.innerHTML = `
+                    <h3>${item.title} →</h3>
+                    <p>${item.description}</p>
+                `;
+                fragment.appendChild(itemEl);
+            });
+        }
+
+        containerEl.appendChild(fragment);
     }
 }
