@@ -27,6 +27,7 @@ export class SectionManager {
             github_projects: true,
             blog: true,
             performance_modelling: true,
+            navigation_links: true,
             ...config.features
         };
         
