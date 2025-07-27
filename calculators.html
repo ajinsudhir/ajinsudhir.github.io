@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Engineering Calculators</title>
+    <meta name="description" content="Interactive calculators for common performance engineering formulas like Little's Law and throughput.">
+    <meta name="author" content="Ajin Sudhir">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><circle cx='12' cy='12' r='10'/><line x1='2' y1='12' x2='22' y2='12'/><path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z'/></svg>">
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/calculators.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" role="progressbar" aria-label="Loading page">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading calculators...</p>
+    </div>
+
+    <!-- Theme switcher -->
+    <button class="theme-switch" aria-label="Toggle dark/light theme">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <div class="container content-hidden" id="main-content">
+        <header class="page-header">
+            <h1>Performance Calculators</h1>
+            <p class="tagline">Interactive tools for common performance engineering formulas.</p>
+        </header>
+
+        <main class="calculators-main">
+            <div class="tabs">
+                <button class="tab-link active" data-tab="workload" type="button">Workload Model (Little's Law)</button>
+                <button class="tab-link" data-tab="throughput" type="button">Throughput</button>
+            </div>
+
+            <!-- Workload Modelling Calculator -->
+            <div id="workload" class="tab-content active">
+                <h2>Workload Model Calculator (Little's Law)</h2>
+                <p class="description">Calculate the average number of concurrent users in a system (L) based on the average arrival rate / throughput (λ) and the average response time (W).</p>
+                <form id="workload-form" class="calculator-form">
+                    <div class="form-group">
+                        <label for="throughput-input">Throughput (requests/sec)</label>
+                        <input type="number" id="throughput-input" placeholder="e.g., 50" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="response-time-input">Avg. Response Time (ms)</label>
+                        <input type="number" id="response-time-input" placeholder="e.g., 500" required>
+                    </div>
+                    <button type="submit" class="btn">Calculate Concurrent Users</button>
+                </form>
+                <div id="workload-result" class="result-box" aria-live="polite"></div>
+            </div>
+
+            <!-- Throughput Calculator -->
+            <div id="throughput" class="tab-content">
+                <h2>Throughput Calculator</h2>
+                <p class="description">Calculate the throughput in requests per second based on the total number of requests processed over a specific time period.</p>
+                <form id="throughput-form" class="calculator-form">
+                    <div class="form-group">
+                        <label for="total-requests-input">Total Requests</label>
+                        <input type="number" id="total-requests-input" placeholder="e.g., 18000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time-period-input">Time Period (seconds)</label>
+                        <input type="number" id="time-period-input" placeholder="e.g., 60" required>
+                    </div>
+                    <button type="submit" class="btn">Calculate Throughput</button>
+                </form>
+                <div id="throughput-result" class="result-box" aria-live="polite"></div>
+            </div>
+        </main>
+
+        <a href="/perf.html" class="back-to-portfolio-link">← Back to Performance Hub</a>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-tagline">Let's connect and build something amazing together!</div>
+            <div class="footer-social">
+                <a href="https://github.com/ajinsudhir" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-built-with">Built with ❤️ using vanilla JavaScript</div>
+            </div>
+        </div>
+    </footer>
+    
+    <script type="module" src="js/calculators.js"></script>
+</body>
+</html>
