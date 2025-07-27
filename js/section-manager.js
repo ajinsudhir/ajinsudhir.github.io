@@ -26,6 +26,7 @@ export class SectionManager {
             skills: true,
             github_projects: true,
             blog: true,
+            performance_modelling: true,
             ...config.features
         };
         
@@ -36,6 +37,7 @@ export class SectionManager {
         this.toggleSection('skills', features.skills);
         this.toggleSection('projects-on-github', features.github_projects);
         this.toggleSection('blog', features.blog);
+        this.toggleSection('performance-modelling', features.performance_modelling);
         
         // Update sections that are enabled and have content
         if (features.about) {
@@ -56,6 +58,9 @@ export class SectionManager {
         
         if (features.blog) {
             this.updateBlogSection(config);
+        }
+        if (features.performance_modelling) {
+            this.updatePerformanceSection(config);
         }
         
         // Update "Projects on GitHub" section title from config if available
@@ -396,5 +401,72 @@ export class SectionManager {
         `;
 
         return postItem;
+    }
+    // Update performance modelling section dynamically
+    updatePerformanceSection(config) {
+        const section = document.querySelector('.performance-modelling');
+        if (!section || !config.performance_modelling) return;
+
+        const titleElement = section.querySelector('h2');
+        if (titleElement) {
+            titleElement.textContent = config.performance_modelling.title || 'Performance Workload Modelling';
+        }
+
+        const descriptionElement = section.querySelector('.section-description');
+        if (descriptionElement && config.performance_modelling.description) {
+            descriptionElement.textContent = config.performance_modelling.description;
+        }
+
+        const container = section.querySelector('.performance-scenarios-container');
+        if (!container) return;
+
+        container.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+
+        if (config.performance_modelling.scenarios?.length) {
+            config.performance_modelling.scenarios.forEach(scenario => {
+                fragment.appendChild(this.createPerformanceScenarioItem(scenario));
+            });
+        } else {
+            const emptyState = document.createElement('div');
+            emptyState.className = 'performance-scenario-item';
+            emptyState.innerHTML = `
+                <h3>Modelling Scenarios Will Appear Here</h3>
+                <p>Add performance workload scenarios to your config.json to showcase your expertise in this area.</p>
+            `;
+            fragment.appendChild(emptyState);
+        }
+
+        container.appendChild(fragment);
+    }
+
+    // Create individual performance scenario item
+    createPerformanceScenarioItem(scenario) {
+        const item = document.createElement('div');
+        item.className = 'performance-scenario-item';
+
+        const metricsHtml = `
+            <div class="metric-item"><span class="label">Concurrent Users</span><span class="value">${scenario.users || 'N/A'}</span></div>
+            <div class="metric-item"><span class="label">Throughput</span><span class="value">${scenario.throughput || 'N/A'}</span></div>
+            <div class="metric-item"><span class="label">Avg. Response Time</span><span class="value">${scenario.avg_response_time || 'N/A'}</span></div>
+            <div class="metric-item"><span class="label">Peak Response Time</span><span class="value">${scenario.peak_response_time || 'N/A'}</span></div>
+        `;
+
+        const keyMetricsHtml = scenario.key_metrics?.length
+            ? `
+                <h4 class="key-metrics-title">Key Operations Modelled</h4>
+                <ul>
+                    ${scenario.key_metrics.map(metric => `<li>${metric}</li>`).join('')}
+                </ul>
+            `
+            : '';
+
+        item.innerHTML = `
+            <h3>${scenario.name}</h3>
+            <div class="performance-metrics-grid">${metricsHtml}</div>
+            ${keyMetricsHtml}
+        `;
+
+        return item;
     }
 }
