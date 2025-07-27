@@ -73,10 +73,27 @@
     font-size: 1.1rem;
 }
 
+.performance-chart-container {
+    margin-top: 2rem;
+}
+
+/* Theme-aware styles for Frappe Charts */
+.chart-container .axis-line,
+.chart-container .bar-line,
+.chart-container .chart-label {
+    stroke: var(--text-color-secondary);
+}
+
+.chart-container .bar rect,
+.chart-container .line-graph-path,
+.chart-container .dataset-dot {
+    stroke: var(--accent-color);
+    fill: var(--accent-color);
+}
+
 @media (min-width: 1024px) {
     .performance-scenarios-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 
