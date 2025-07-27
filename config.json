@@ -112,15 +112,9 @@
   "github_projects": {
     "title": "Projects on GitHub"
   },
-    "sections": {
-    "about": {
-      // ...
-    },
     "blog": {
-      "title": "From My Blog"
-    },
-    "blog": {
-    "posts": [
+      "title": "From My Blog",
+      "posts": [
       {
         "title": "My First Post: Setting Up a Dynamic Portfolio",
         "date": "October 26, 2023",
