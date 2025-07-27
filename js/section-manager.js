@@ -424,8 +424,8 @@ export class SectionManager {
         const fragment = document.createDocumentFragment();
 
         if (config.performance_modelling.scenarios?.length) {
-            config.performance_modelling.scenarios.forEach(scenario => {
-                fragment.appendChild(this.createPerformanceScenarioItem(scenario));
+            config.performance_modelling.scenarios.forEach((scenario, index) => {
+                fragment.appendChild(this.createPerformanceScenarioItem(scenario, index));
             });
         } else {
             const emptyState = document.createElement('div');
@@ -438,10 +438,11 @@ export class SectionManager {
         }
 
         container.appendChild(fragment);
+        this.renderPerformanceCharts(config);
     }
 
     // Create individual performance scenario item
-    createPerformanceScenarioItem(scenario) {
+    createPerformanceScenarioItem(scenario, index) {
         const item = document.createElement('div');
         item.className = 'performance-scenario-item';
 
@@ -453,20 +454,44 @@ export class SectionManager {
         `;
 
         const keyMetricsHtml = scenario.key_metrics?.length
-            ? `
-                <h4 class="key-metrics-title">Key Operations Modelled</h4>
-                <ul>
-                    ${scenario.key_metrics.map(metric => `<li>${metric}</li>`).join('')}
-                </ul>
-            `
+            ? `<h4 class="key-metrics-title">Key Operations Modelled</h4><ul>${scenario.key_metrics.map(metric => `<li>${metric}</li>`).join('')}</ul>`
             : '';
+
+        const chartHtml = scenario.chart_data ? `<div class="performance-chart-container" id="performance-chart-${index}"></div>` : '';
 
         item.innerHTML = `
             <h3>${scenario.name}</h3>
             <div class="performance-metrics-grid">${metricsHtml}</div>
             ${keyMetricsHtml}
+            ${chartHtml}
         `;
 
         return item;
+    }
+
+    // Render charts after the section is added to the DOM
+    renderPerformanceCharts(config) {
+        if (typeof frappe === 'undefined' || !config.performance_modelling?.scenarios) {
+            return;
+        }
+
+        const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim();
+
+        config.performance_modelling.scenarios.forEach((scenario, index) => {
+            if (scenario.chart_data) {
+                const chartElement = document.getElementById(`performance-chart-${index}`);
+                if (chartElement) {
+                    new frappe.Chart(chartElement, {
+                        title: scenario.chart_data.title,
+                        data: scenario.chart_data,
+                        type: scenario.chart_data.type || 'bar',
+                        height: 250,
+                        colors: [accentColor, '#743ee2', '#f0652e'],
+                        tooltipOptions: { formatTooltipY: d => d + ' ms' },
+                        axisOptions: { xIsSeries: true }
+                    });
+                }
+            }
+        });
     }
 }
