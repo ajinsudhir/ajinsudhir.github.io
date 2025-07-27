@@ -6,7 +6,8 @@
     "skills": true,
     "github_projects": true,
     "blog": true,
-    "performance_modelling": true
+    "performance_modelling": true,
+     "navigation_links": true
   },
   "site": {
     "title": "Ajin Sudhir",
@@ -172,6 +173,16 @@
           "labels": ["p50", "p90", "p95", "p99", "p99.9"],
           "datasets": [ { "name": "Latency", "values": [45, 80, 110, 150, 250] } ]
         }
+      }
+    ]
+  },
+  "navigation_links": {
+    "title": "Explore More",
+    "items": [
+      {
+        "title": "Performance Engineering Hub",
+        "description": "A deep dive into performance concepts, tools, and case studies.",
+        "url": "perf.html"
       }
     ]
   },
