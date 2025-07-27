@@ -35,6 +35,8 @@
             <div class="tabs">
                 <button class="tab-link active" data-tab="workload" type="button">Workload Model (Little's Law)</button>
                 <button class="tab-link" data-tab="throughput" type="button">Throughput</button>
+                 <button class="tab-link" data-tab="availability" type="button">Availability / Uptime</button>
+           
             </div>
 
             <!-- Workload Modelling Calculator -->
@@ -71,6 +73,19 @@
                     <button type="submit" class="btn">Calculate Throughput</button>
                 </form>
                 <div id="throughput-result" class="result-box" aria-live="polite"></div>
+            </div>
+            <!-- Availability / Uptime Calculator -->
+            <div id="availability" class="tab-content">
+                <h2>Availability / Uptime Calculator</h2>
+                <p class="description">Calculate the allowed downtime for a given Service Level Objective (SLO) over various time periods.</p>
+                <form id="availability-form" class="calculator-form">
+                    <div class="form-group">
+                        <label for="uptime-percentage-input">Uptime Percentage (%)</label>
+                        <input type="number" id="uptime-percentage-input" step="any" min="0" max="100" placeholder="e.g., 99.9" required>
+                    </div>
+                    <button type="submit" class="btn">Calculate Downtime</button>
+                </form>
+                <div id="availability-result" class="result-box" aria-live="polite"></div>
             </div>
         </main>
 
