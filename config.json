@@ -4,7 +4,8 @@
     "projects": true,
     "experience": true,
     "skills": true,
-    "github_projects": true
+    "github_projects": true,
+    "blog": true
   },
   "site": {
     "title": "Ajin Sudhir",
@@ -110,6 +111,29 @@
   },
   "github_projects": {
     "title": "Projects on GitHub"
+  },
+    "sections": {
+    "about": {
+      // ...
+    },
+    "blog": {
+      "title": "From My Blog"
+    },
+    "blog": {
+    "posts": [
+      {
+        "title": "My First Post: Setting Up a Dynamic Portfolio",
+        "date": "October 26, 2023",
+        "excerpt": "A deep dive into how I built this portfolio using vanilla JavaScript modules, a single JSON configuration file, and modern CSS.",
+        "link": "https://medium.com/your-article-link"
+      },
+      {
+        "title": "CSS Tricks for Modern Web Design",
+        "date": "October 15, 2023",
+        "excerpt": "Exploring the power of CSS variables, Grid, and Flexbox to create responsive and themeable layouts without a framework.",
+        "link": "https://your-blog.com/css-tricks"
+      }
+    ]
   },
   "footer": {
     "show_social_links": true,
