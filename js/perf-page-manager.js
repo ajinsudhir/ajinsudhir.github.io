@@ -4,6 +4,7 @@ export class PerfPageManager {
         this.updateIntroSection(config.intro);
         this.updateConceptsSection(config.concepts);
         this.updateToolsSection(config.tools);
+        this.updateCaseStudiesSection(config.case_studies);
     }
 
     updateIntroSection(introConfig) {
@@ -80,6 +81,48 @@ export class PerfPageManager {
         `;
 
         return categoryDiv;
+    }
+    updateCaseStudiesSection(caseStudiesConfig) {
+        const section = document.querySelector('.perf-case-studies');
+        if (!section || !caseStudiesConfig) return;
+
+        const titleEl = section.querySelector('h2');
+        if (titleEl) titleEl.textContent = caseStudiesConfig.title || '';
+
+        const containerEl = section.querySelector('.case-studies-container');
+        if (!containerEl) return;
+
+        containerEl.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+
+        caseStudiesConfig.items.forEach(item => {
+            const itemEl = this.createCaseStudyItem(item);
+            fragment.appendChild(itemEl);
+        });
+
+        containerEl.appendChild(fragment);
+    }
+
+    createCaseStudyItem(item) {
+        const itemEl = document.createElement('div');
+        itemEl.className = 'case-study-item';
+
+        const resultsHtml = item.results
+            ? `<ul class="results-list">${item.results.map(res => `<li>${res}</li>`).join('')}</ul>`
+            : '';
+
+        const linkHtml = item.link
+            ? `<a href="${item.link.url}" class="read-more-link" target="_blank" rel="noopener noreferrer">${item.link.text || 'Read More'} →</a>`
+            : '';
+
+        itemEl.innerHTML = `
+            <h3>${item.title}</h3>
+            <p class="summary">${item.summary}</p>
+            ${resultsHtml}
+            ${linkHtml}
+        `;
+
+        return itemEl;
     }
 }
 
