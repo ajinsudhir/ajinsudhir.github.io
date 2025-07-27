@@ -1,0 +1,93 @@
+/* css/calculators.css */
+
+.calculators-main {
+    margin-top: 2rem;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.tab-link {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.tab-link:hover {
+    color: var(--text-color-primary);
+}
+
+.tab-link.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    margin-bottom: 0.5rem;
+}
+
+.tab-content .description {
+    color: var(--text-color-secondary);
+    margin-bottom: 2rem;
+    max-width: 700px;
+}
+
+/* Calculator Forms */
+.calculator-form {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color-secondary);
+}
+
+.form-group input {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-secondary);
+    color: var(--text-color-primary);
+    font-size: 1rem;
+}
+
+/* Result Box */
+.result-box {
+    background-color: var(--background-secondary);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    min-height: 60px;
+}
+
