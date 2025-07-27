@@ -1,1 +1,82 @@
+/* css/performance.css */
+
+.performance-modelling {
+    margin-bottom: 4rem;
+}
+
+.performance-modelling h2 {
+    font-size: var(--h2-font-size);
+    color: var(--text-color-primary);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.performance-modelling .section-description {
+    text-align: center;
+    color: var(--text-color-secondary);
+    max-width: 800px;
+    margin: 0 auto 2.5rem auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.performance-scenarios-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.performance-scenario-item {
+    background-color: var(--background-secondary);
+    border-radius: var(--border-radius);
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.performance-scenario-item h3 {
+    font-size: var(--h3-font-size);
+    color: var(--text-color-primary);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.performance-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric-item .label {
+    font-size: 0.875rem;
+    color: var(--text-color-secondary);
+    display: block;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-item .value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color-primary);
+}
+
+.performance-scenario-item .key-metrics-title {
+    font-weight: 600;
+    color: var(--text-color-primary);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+@media (min-width: 1024px) {
+    .performance-scenarios-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 
