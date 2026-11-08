@@ -99,6 +99,14 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:11px;letter-s
 .skill p{margin:0 0 16px;font-size:14px;color:var(--muted)}
 .skill .tags span{color:var(--text);border-color:color-mix(in srgb,var(--k) 40%,transparent)}
 .skill .tags span:hover{border-color:var(--k);color:var(--k)}
+.cos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.co{padding:0;overflow:hidden}
+.co .logo{height:92px;display:grid;place-items:center;background:#f4f7fb;padding:16px}
+.co .logo img{max-width:80%;max-height:56px;object-fit:contain}
+.co .logo .wm{font:700 18px/1.2 "Segoe UI",system-ui,sans-serif;letter-spacing:.04em;color:#1b2740;text-align:center}
+.co .info{padding:18px 20px}
+.co .info b{display:block;font-size:15px}
+.co .info span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}.reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
@@ -140,6 +148,12 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:11px;letter-s
 <section id="about"><div class="wrap reveal">
   <div class="label mono">// 01 · profile</div>
   <p class="about">Performance engineer who also <b>builds the product</b>. For <b>10+ years</b> across banking, insurance and e-commerce I have tuned <b>Java, Kafka and Kubernetes</b> systems, and at CGI I go further: I contribute to <b>product development and enhancements</b> in the shared codebase, ship fixes and features to production, and build <b>AI tools</b> that speed up the work.</p>
+</div></section>
+
+<section id="companies"><div class="wrap">
+  <div class="label mono reveal">// where i've worked</div>
+  <h2 class="reveal">Companies.</h2>
+  <div class="cos"><div class="glass co reveal"><div class="logo"><img src="assets/logos/cgi.png" alt="CGI logo" onerror="this.outerHTML='<span class=wm>CGI</span>'"></div><div class="info"><b>CGI</b><span>Lead, Performance Engineering</span><span class="mono">2025 – present</span></div></div><div class="glass co reveal"><div class="logo"><img src="assets/logos/infosys.png" alt="Infosys logo" onerror="this.outerHTML='<span class=wm>Infosys</span>'"></div><div class="info"><b>Infosys</b><span>Quality Engineering Lead (for Allianz)</span><span class="mono">2024 – 2025</span></div></div><div class="glass co reveal"><div class="logo"><img src="assets/logos/allianz.png" alt="Allianz Technology logo" onerror="this.outerHTML='<span class=wm>Allianz Technology</span>'"></div><div class="info"><b>Allianz Technology</b><span>Lead / Specialist / Sr Engineer</span><span class="mono">2019 – 2024</span></div></div><div class="glass co reveal"><div class="logo"><img src="assets/logos/testhouse.png" alt="Testhouse logo" onerror="this.outerHTML='<span class=wm>Testhouse</span>'"></div><div class="info"><b>Testhouse</b><span>Analyst to Consultant</span><span class="mono">2015 – 2019</span></div></div></div>
 </div></section>
 
 <section id="impact"><div class="wrap">
