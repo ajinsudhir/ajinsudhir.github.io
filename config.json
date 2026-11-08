@@ -5,17 +5,17 @@
     "experience": true,
     "skills": true,
     "github_projects": true,
-    "blog": true,
+    "blog": false,
     "performance_modelling": true,
-     "navigation_links": true
+    "navigation_links": true
   },
   "site": {
     "title": "Ajin Sudhir",
-    "description": "Developer Portfolio",
+    "description": "Lead Performance Engineer & Developer",
     "seo": {
-      "title": "Ajin Sudhir - Developer Portfolio",
-      "description": "Developer Portfolio of Ajin Sudhir",
-      "keywords": "developer, portfolio, github",
+      "title": "Ajin Sudhir - Lead Performance Engineer & Developer",
+      "description": "Lead Performance Engineer and Developer. Java, Kafka, Kubernetes and AI-assisted engineering.",
+      "keywords": "performance engineering, Java, Kafka, Kubernetes, AI, developer, portfolio",
       "author": "Ajin Sudhir",
       "og_image": "https://avatars.githubusercontent.com/ajinsudhir",
       "twitter_card": "summary_large_image",
@@ -24,7 +24,7 @@
   },
   "header": {
     "greeting": "Ajin Sudhir",
-    "tagline": "Developer and Creator."
+    "tagline": "Lead Performance Engineer & Developer"
   },
   "social_links": [
     {
@@ -32,30 +32,62 @@
       "url": "https://github.com/ajinsudhir",
       "icon": "github",
       "required": true
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/ajinsudhir93",
+      "icon": "linkedin"
     }
   ],
   "github_username": "ajinsudhir",
   "about": {
     "paragraphs": [
-      "Welcome to my portfolio! I'm passionate about creating amazing digital experiences and solving complex problems through code.",
-      "This portfolio showcases my journey, projects, and skills. Feel free to explore and get in touch if you'd like to collaborate!"
+      "Performance engineer who also builds the product. For 10+ years across banking, insurance and e-commerce I have tuned Java, Kafka and Kubernetes systems, and at CGI I contribute to product development and enhancements in the shared codebase, ship fixes and features to production, and build AI tools that speed up the work.",
+      "I lead performance engineering for a cloud-native credit and collections platform used by major US financial institutions, using Claude Code and Gemini Code Assist for code-level analysis."
     ]
   },
   "projects": {
     "title": "Featured Projects",
     "items": [
       {
-        "name": "Portfolio Website",
-        "date": "July 27, 2025",
+        "name": "SmartCUBE AI",
+        "date": "2026",
         "description": [
-          "A modern, responsive portfolio website built with vanilla JavaScript",
-          "Features dark/light mode, dynamic content loading, and GitHub integration",
-          "Fully configurable through JSON with automated README generation"
+          "Java desktop toolkit for real-time root cause analysis of batch performance on Kubernetes",
+          "Live traces and slow queries go to Gemini CLI, with a RAG assistant for test data",
+          "Cut daily analysis effort from 5-6 hours to under 1 hour"
+        ],
+        "picture": "assets/projects/Placeholder.png",
+        "link": {
+          "url": "https://ajinsudhir.github.io/smartcube.html",
+          "title": "View Project"
+        }
+      },
+      {
+        "name": "Kafka Consumer Multithreading Framework",
+        "date": "2025",
+        "description": [
+          "Reusable abstract class added to the shared product library",
+          "17 consumers across 5 services, 64 fewer pods, node utilization from 85% to 65%",
+          "Default in the next product release"
         ],
         "picture": "assets/projects/Placeholder.png",
         "link": {
           "url": "https://ajinsudhir.github.io",
-          "title": "View Live Site"
+          "title": "View Portfolio"
+        }
+      },
+      {
+        "name": "JMeter AI Plugins",
+        "date": "In progress",
+        "description": [
+          "Real-time results dashboard",
+          "AI-enhanced auto-correlator that detects dynamic values and generates analysis reports"
+        ],
+        "picture": "assets/projects/Placeholder.png",
+        "link": {
+          "url": "https://ajinsudhir.github.io",
+          "title": "View Portfolio"
         }
       }
     ]
@@ -68,13 +100,39 @@
         "role": "Lead - Performance Engineering",
         "date": "Mar 2025 - Present",
         "responsibilities": [
-          "Add your key responsibilities and achievements here",
-          "Include specific technologies you worked with",
-          "Mention any notable projects or impact metrics",
-          "Update this section with your actual work experience"
+          "Built a reusable Kafka consumer multithreading class: 5 services, 17 consumers, 64 fewer pods, 38 minutes saved per batch",
+          "Fixed JWT signing-key and Kafka schema-registry caching defects, cutting batch windows by 41-54 minutes",
+          "Use Claude Code and Gemini Code Assist for code-level analysis, review and fixes",
+          "Led performance testing for major US bank go-lives with no production issues; mentor the offshore performance team"
         ],
         "logo": "assets/logos/CGI_branded_professional-occasion_banner_03.png",
         "logo_dark": "assets/logos/CGI_branded_professional-occasion_banner_03.png"
+      },
+      {
+        "company": "Infosys (for Allianz Technology)",
+        "role": "Quality Engineering Lead - Performance Engineering",
+        "date": "Oct 2024 - Mar 2025",
+        "responsibilities": [
+          "Led performance engineering for Allianz insurance platforms: test strategy, workload models, NFRs, execution and reporting"
+        ]
+      },
+      {
+        "company": "Allianz Technology",
+        "role": "Lead / Specialist / Sr Engineer - Performance Engineering",
+        "date": "Aug 2019 - Sep 2024",
+        "responsibilities": [
+          "Led end-to-end performance engineering for insurance applications, from NFRs to bottleneck analysis and sign-off",
+          "Built a web reporting dashboard integrating the Dynatrace and NeoLoad APIs",
+          "Promoted twice: Sr Engineer (2019), Specialist (2021), Lead (2023)"
+        ]
+      },
+      {
+        "company": "Testhouse Ltd",
+        "role": "Performance Test Analyst to Consultant",
+        "date": "Dec 2015 - Aug 2019",
+        "responsibilities": [
+          "Performance-tested banking, insurance, telecom, e-commerce and education applications using LoadRunner, JMeter and Visual Studio Enterprise"
+        ]
       }
     ]
   },
@@ -82,31 +140,64 @@
     "title": "Skills & Technologies",
     "categories": [
       {
-        "name": "Programming Languages & Technologies",
+        "name": "AI & GenAI",
         "items": [
-          "JavaScript",
-          "Python",
-          "Java",
-          "TypeScript"
+          "Gemini CLI",
+          "Gemini Code Assist",
+          "Claude Code",
+          "OpenAI",
+          "RAG",
+          "Multi-agent systems",
+          "OpenSpec"
         ]
       },
       {
-        "name": "Tools & Platforms",
+        "name": "Product & Development",
         "items": [
-          "Git",
-          "GitHub",
-          "VS Code",
-          "Docker"
+          "Java",
+          "Python",
+          "JavaScript",
+          "TypeScript",
+          "Kafka",
+          "Kubernetes",
+          "Docker",
+          "Camunda",
+          "PostgreSQL"
+        ]
+      },
+      {
+        "name": "Performance Testing",
+        "items": [
+          "JMeter",
+          "NeoLoad",
+          "LoadRunner",
+          "Playwright",
+          "Workload modelling",
+          "Capacity planning"
+        ]
+      },
+      {
+        "name": "Observability & Cloud",
+        "items": [
+          "Dynatrace",
+          "Glowroot",
+          "Grafana",
+          "Prometheus",
+          "JProfiler",
+          "Azure",
+          "AWS",
+          "GCP"
         ]
       },
       {
         "name": "Certifications",
         "items": [
-          {
-            "name": "Add your certification name here",
-            "url": "https://example.com/your-certification-link"
-          },
-          "You can also add certifications without links"
+          "Google 5-Day AI Agents Intensive",
+          "Tricentis NeoLoad Certified Specialist",
+          "Azure Fundamentals (AZ-900)",
+          "ISTQB Foundation",
+          "AWS Planning and Designing Databases",
+          "Scrum Foundation Professional"
         ]
       }
     ]
@@ -114,26 +205,13 @@
   "github_projects": {
     "title": "Projects on GitHub"
   },
-   "blog": {
+  "blog": {
     "title": "From My Blog",
-    "posts": [
-      {
-        "title": "My First Post: Setting Up a Dynamic Portfolio",
-        "date": "October 26, 2023",
-        "excerpt": "A deep dive into how I built this portfolio using vanilla JavaScript modules, a single JSON configuration file, and modern CSS.",
-        "link": "https://medium.com/your-article-link"
-      },
-      {
-        "title": "CSS Tricks for Modern Web Design",
-        "date": "October 15, 2023",
-        "excerpt": "Exploring the power of CSS variables, Grid, and Flexbox to create responsive and themeable layouts without a framework.",
-        "link": "https://your-blog.com/css-tricks"
-      }
-    ]
+    "posts": []
   },
   "performance_modelling": {
     "title": "Performance Workload Modelling",
-    "description": "An overview of workload models for various application scenarios, demonstrating an understanding of system behavior under specific load conditions.",
+    "description": "Illustrative workload models showing how business scenarios turn into load profiles and pass/fail criteria. Sample figures, not client data.",
     "scenarios": [
       {
         "name": "E-commerce Peak Sale Event",
@@ -150,9 +228,22 @@
         "chart_data": {
           "title": "Response Time by Operation (ms)",
           "type": "bar",
-          "labels": ["Login", "Search", "Add to Cart", "Checkout"],
+          "labels": [
+            "Login",
+            "Search",
+            "Add to Cart",
+            "Checkout"
+          ],
           "datasets": [
-            { "name": "Avg Response Time", "values": [150, 200, 180, 450] }
+            {
+              "name": "Avg Response Time",
+              "values": [
+                150,
+                200,
+                180,
+                450
+              ]
+            }
           ]
         }
       },
@@ -170,8 +261,25 @@
         "chart_data": {
           "title": "Latency Distribution (ms)",
           "type": "line",
-          "labels": ["p50", "p90", "p95", "p99", "p99.9"],
-          "datasets": [ { "name": "Latency", "values": [45, 80, 110, 150, 250] } ]
+          "labels": [
+            "p50",
+            "p90",
+            "p95",
+            "p99",
+            "p99.9"
+          ],
+          "datasets": [
+            {
+              "name": "Latency",
+              "values": [
+                45,
+                80,
+                110,
+                150,
+                250
+              ]
+            }
+          ]
         }
       }
     ]
@@ -190,9 +298,9 @@
     "show_social_links": true,
     "show_built_with": true,
     "built_with_text": "Built with ❤️ using vanilla JavaScript",
-    "tagline": "Let's connect and build something amazing together!"
+    "tagline": "Let's build fast."
   },
-   "performance_page": {
+  "performance_page": {
     "seo": {
       "title": "Ajin Sudhir - Performance Engineering Hub",
       "description": "A showcase of performance engineering concepts, tools, and case studies by Ajin Sudhir.",
@@ -212,11 +320,26 @@
     "concepts": {
       "title": "Core Concepts",
       "items": [
-        { "name": "Latency & Response Time", "description": "The time taken for a single transaction to be processed." },
-        { "name": "Throughput", "description": "The number of transactions a system can handle per unit of time (e.g., requests/second)." },
-        { "name": "Scalability", "description": "The ability of a system to handle a growing amount of work by adding resources." },
-        { "name": "Capacity Planning", "description": "The process of determining the production capacity needed by an organization to meet changing demands for its products." },
-        { "name": "Workload Modelling", "description": "Creating a representative model of user and system load to be used in performance tests." }
+        {
+          "name": "Latency & Response Time",
+          "description": "The time taken for a single transaction to be processed."
+        },
+        {
+          "name": "Throughput",
+          "description": "The number of transactions a system can handle per unit of time (e.g., requests/second)."
+        },
+        {
+          "name": "Scalability",
+          "description": "The ability of a system to handle a growing amount of work by adding resources."
+        },
+        {
+          "name": "Capacity Planning",
+          "description": "The process of determining the production capacity needed by an organization to meet changing demands for its products."
+        },
+        {
+          "name": "Workload Modelling",
+          "description": "Creating a representative model of user and system load to be used in performance tests."
+        }
       ]
     },
     "tools": {
@@ -224,19 +347,35 @@
       "categories": [
         {
           "name": "Load Generation",
-          "items": ["JMeter", "Gatling", "k6", "Locust"]
+          "items": [
+            "JMeter",
+            "Gatling",
+            "k6",
+            "Locust"
+          ]
         },
         {
           "name": "Monitoring & Observability",
-          "items": ["Prometheus", "Grafana", "Datadog", "New Relic", "OpenTelemetry"]
+          "items": [
+            "Prometheus",
+            "Grafana",
+            "Datadog",
+            "New Relic",
+            "OpenTelemetry"
+          ]
         },
         {
           "name": "Profiling",
-          "items": ["JProfiler", "VisualVM", "py-spy", "pprof"]
+          "items": [
+            "JProfiler",
+            "VisualVM",
+            "py-spy",
+            "pprof"
+          ]
         }
       ]
     },
-     "case_studies": {
+    "case_studies": {
       "title": "Case Studies & Analyses",
       "items": [
         {
@@ -254,5 +393,5 @@
         }
       ]
     }
-}
+  }
 }
