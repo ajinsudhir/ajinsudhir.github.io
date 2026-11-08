@@ -139,11 +139,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .grid, .safe, .steps, .clips { grid-template-columns: 1fr; }
   nav { display: none; }
 }
+.back{margin:0 auto 0 8px;display:inline-flex;align-items:center;gap:6px;font:500 13px var(--mono);color:var(--accent);text-decoration:none;border:1px solid var(--accent);border-radius:999px;padding:6px 14px;white-space:nowrap}
+.back:hover{background:var(--accent);color:#fff}
 </style>
 
 <header>
   <div class="wrap bar">
     <a class="brand" href="#top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAJPUlEQVR4nO3ca1BU5x3H8e/Zc3bZq3GaANV0ojFKVJBpDGBqo5n2hVoFzIwZLyi0mkadUWGmM22dvmjft29a0F5szYwIJO20VkGjbaZNo7VjhWjKRY23tKYx1URrBfYG7NMXZw+cPbsLHtgbur8ZXuyFs8tn/v9nz1me54HMihvYAdwAPgJ2AZ60vqMMjQvYDJwHhOHnfeDV8HMe+bhQMToJA9ncTrFw2zqxcPt6YfM49XBdwGuoVfjIRQa+joowDPXc1rViW3eb+L64Jn4grontPUfFwm3rhM0dAddNGuGkdLwoMBO4BlhsbieFVeWU1daQXzgXQYghBgCQsSJh4daFS7TXN9Ldcoxgb792jG6gHngD6EvVG0852PdE9xeD9/zf+dPuH64HpLLaavLnz4uAMkYPd7b+ID0tR41wPwHeJAVwyQZzAVXApmllxSde+/uhWUMENyrYHSEGkZAQiLhQxkRW3EG6W9oI9nq1h3tQ4ZJacckCcwMbgFqgCGDe2hVs+PU+AvQjCE3o4NFwERWXVLhEg7mB9UAdYSibx0nhhnK+vHsrU5/+AiGGEvZiEXANTXQ3txnhtDGuN1GvmSiwqIoaHszrasifP5cQQ4QYTNDLRUaDu33xA87WHzTCXUCtuBYSUHETBdPGqDqgEFSooqoKSuuqyZ8/d9TBPNFR4WRuX7yUNLjxgkVXlMdFUVU5pbuqo04PUh09XHuDChe4HwFXjwpnulXNgsWFKqutJi/FFTVWhuEufaB+ODS3Ebg/XFxaxZka4x4ULH5F1VWTP28egqGMgTJGxooFmVthuK7mVoL3x9eqY4FpUCNjlMdF0cZyynZVkzc/s6GMMVZcDLgxWzUemBt1MK/FAFW6SzsznzxQxkS3aqt+jLuICtdMDDgjWGyoqnJKayc/lDFjwF0AGoAmdK2qB1OAQ0AFgNVp57mtaynZsZHc2bMJPURQxmhj3GdXr9H+0ybO/+I3DHj92sOtwBpQTyItut9zAM+P3JSwWBUsigKAQKTgracn2t9msSrINhtIEY1XgmoDRFaYB/XK/ynJZUf0q8L2qR4W1LxM6c6N5M6ZQ4hBhpJ0xp7qWFCQUfj06lU69jTT2XgY/3/vq495HIR6faB+XV5EeDyLCTalrhIRGMTbeoahm3cByJnqobhmNaU7N/FEGC5ZlzrJThTUgcP476lQylN5eDYvQ3LkcHf3fjCAKbEOKLnsOFYUkrN4Lv53u/Edf4/AzTu01zfR1XiEBdWrKd21idw5cxiaRHCjQs3Iw131VVwVLyA/+Tjeo2djHiMmGCGBCAwgOXNwVi7C/tICAie78L7Vgf/mXdobmug6qMKVhOFEBrfqaK2nzMjHXfUVXJVfwvI5DyI4iPAFIRT7K6jYYFqG4Ww4KhaRs7QI/8lufEa4mtWU7thEbkFmjXGjQVlnfR7PlhU4vlaKxe1QofzB8G/KcY85OpgWfcVVLMK+dEEYrl2Fq2+i88ARimtWU7JThUtnxQ1DXblKx15D64Wh3K8swZL7GKE7vQhv4IEvEh8MTIuu4pwVZdh1FRe4eYf2hiY6G49QXF1Jya5q8grmpPT8TQ/VvqeJrsbD+O+pJ+vKrGl4tixXoZ54DBEYQPgCcVsvXsyBaRkLbk8znQdbWVBTSelODS55FSejYDELBeP6cmt8YFriwR3vIPDxHToamulqbKW4pjLcqgUJbdXRKso6axruLctxvbIE2Qg1gUwMTIsR7iVdxX18h/aGZjp1pyN5BQUTqjhjRXU2Hiagg/K8ugLXmhejKyoBSQyYFg3OYcNZrlZc4GQ33jBcx55mug62sqC6Uj2PKygwdTE/VkUlE0pLYsG06OAc5WURpyNRcDs3kfvs6K2qVdTty1fo2NscA2o5rjUxxqgkJDlgWh6k4hqPhCuuOgpORkFC4dPLV+jYo34CB/6X2ooyJrlgWmJUXATc3hZdq1aT92wBALevXKGjIRJKmTWNKWmA0pIaMC1jtereFrqaWimueRkkic4Dh0cq6pnpeLYsTxuUltSCaYnVqqd68B5rD3+qNg0/1fqMrvUeTx+UlvSAadFX3KpScpYW4TveQX/LuyDB1O+uw7N5uXpRnGYoLZaxn5KCaHDuHOyL54FFQpJlnJUvYJnqGtclTLKSGWBaQgIxMHJqIQIDGQOlJbPAJkGyYCaTBTOZLJjJZMFMJgtmMlkwk8mCmUwWzGSyYCaTBTOZLJjJZMFMJgtmMlkwk8mCmUwWzGSyYCYTE0xSZFDiTyp72CMpMpI19v+HjGAKgO+dTgav/wfJpjxScJJVRsqxErz0Ef1H/qbdHSGnv+ED3gOmB05fIHjuKvalRThWlqDMyEOEBAwmbjVtJkWyqh01cPnf9DX/mf62M8PT7lFNfNoNPdgg6rKZKqBW+IKFvj+cw3+yG/uSIhyrHj44yaqA3Uaw8zp9Le/gbTtDaARKW3PUBCOzZIyN2gfsQ13RNQL3x3P4T4XhVpagzJzccJJVAdnCwMUb3N/3Ft7Dpwn1RUHFXJwV7z/fY8AV4lhZOunghqEu3KD39RP0/+6vhPqGu21UKC1jTRWIA3ce/6meSQOnr6je/VFQ2qq1UaG0POjcCj3cBlS4okyH06CCF2/Q+6sTeA9FQZlewmx2Mkof8Mvwi2QsXMQYtf8E3uiKGvci+fHO3tHgtFatG27Vkz3Yl6YHTl9RfbFbb8LbMEx0ulM/xorz6yruxUL1U/Xp/KTCSVYZZJmBC/9Sx6hDpyfcevGSqPlhsVv1bV2rripBmZkEONnCwLVPuP/zY3h/HwGVlK1kEj2hLhrOr4NLdKvKFiRJ4rPt9QS7PtTuTepmRcmagWiEqxP+kTEuZ0khzlXm4bRLGIYEyBKh4KCfUOiNoU/uWFEX9f+MJG+Hlewpm3q49ahwRf63zxM4FQMuzrry4cG860P6D50mZ/F8n3PZwt9KQvrxjSc3nNP9LUlfPpfqHeqidliR7LYwXAnK7OkM/vMWd+v2IVksTPvLj7AVziDw/nV69x/He+i0eq0nSe0IUZbi957WuIFvots0UrLbhGP582LKt9cIrLKQcqwi9/VvCc83lgmLy27cNHJ1+t56euPCAIdsEUiSwCIJyapkzO6amRYXsAV1k1vjxrf/QEXNQsVIxm+t/H+Lo5r4ie4q5AAAAABJRU5ErkJggg==" alt="">SMARTCUBE<sup>AI</sup></a>
+    <a class="back" href="index.html">&larr; Home</a>
     <nav aria-label="Sections">
       <a href="#tour">Tour</a><a href="#roles">By role</a><a href="#features">Features</a><a href="#safe">Safety</a><a href="#start">Get started</a><a href="#faq">FAQ</a>
     </nav>
@@ -287,7 +290,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 </main>
 
 <footer>
-  <div class="wrap"><span>SmartCUBE<sup>AI</sup> v2026.1 · Created by Ajin Sudhir</span><span>Help › User Guide inside the app</span></div>
+  <div class="wrap"><span>SmartCUBE<sup>AI</sup> v2026.1 · Created by Ajin Sudhir</span><span><a href="index.html">&larr; Back to Ajin's portfolio</a> · Help › User Guide inside the app</span></div>
 </footer>
 
 <script>
