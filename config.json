@@ -78,16 +78,17 @@
         }
       },
       {
-        "name": "JMeter AI Plugins",
-        "date": "In progress",
+        "name": "SmartBlitz AI for JMeter",
+        "date": "2026",
         "description": [
-          "Real-time results dashboard",
-          "AI-enhanced auto-correlator that detects dynamic values and generates analysis reports"
+          "Three open-source JMeter plugins: Workbench, MCP Bridge and Insight Dashboard",
+          "Workbench: automatic correlation, scenario recording, script diffing and test data generation",
+          "MCP Bridge lets AI agents read and edit the live test plan; Insight Dashboard shows live per-transaction results"
         ],
         "picture": "assets/projects/Placeholder.png",
         "link": {
-          "url": "https://ajinsudhir.github.io",
-          "title": "View Portfolio"
+          "url": "https://ajinsudhir.github.io/jmeter-plugins.html",
+          "title": "View Project"
         }
       }
     ]
