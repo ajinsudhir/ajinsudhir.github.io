@@ -132,10 +132,14 @@ footer a{color:var(--muted)}
 .mascot{display:flex;align-items:flex-end;gap:14px;margin-bottom:16px}.mascot svg{width:96px;height:106px;flex:none}
 .bubble{background:var(--card);border:1px solid var(--line);border-radius:12px 12px 12px 2px;padding:10px 14px;font-size:14px;color:var(--soft);margin-bottom:18px}.bubble b{color:var(--orange)}
 .diagram img.flow{display:block;width:100%;height:auto;border-radius:8px}
+#bgfx{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(800px 500px at 88% -5%,rgba(30,136,229,.16),transparent 70%),radial-gradient(700px 500px at -5% 70%,rgba(67,160,71,.10),transparent 70%)}
+section.alt{background:rgba(29,31,34,.72)}
 </style>
 </head>
 <body>
 
+<canvas id="bgfx" aria-hidden="true"></canvas>
 <header class="nav"><div class="wrap">
   <div class="brand"><a class="pill" href="index.html">&larr; Home</a><span class="mini" aria-hidden="true"><svg viewBox="0 0 200 220" role="img" aria-label="SmartBlitz mascot: a friendly robot with a lightning bolt antenna"><defs><linearGradient id="bh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3f46"/><stop offset="1" stop-color="#2a2d31"/></linearGradient><linearGradient id="bb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2196f3"/><stop offset="1" stop-color="#1565c0"/></linearGradient></defs><ellipse cx="100" cy="212" rx="46" ry="6" fill="#000" opacity=".3"/><path d="M104 6 L88 34 L99 34 L92 56 L114 26 L103 26 Z" fill="#fb8c00" stroke="#ffb74d" stroke-width="1.5" stroke-linejoin="round"/><rect x="96" y="52" width="8" height="14" fill="#555b63"/><rect x="38" y="64" width="124" height="86" rx="30" fill="url(#bh)" stroke="#1e88e5" stroke-width="3"/><rect x="52" y="80" width="96" height="52" rx="22" fill="#14171a" stroke="#1e88e5" stroke-width="2"/><ellipse cx="78" cy="106" rx="11" ry="13" fill="#43a047"/><ellipse cx="122" cy="106" rx="11" ry="13" fill="#43a047"/><ellipse cx="81" cy="101" rx="4" ry="5" fill="#c8f5cb"/><ellipse cx="125" cy="101" rx="4" ry="5" fill="#c8f5cb"/><path d="M90 124 Q100 131 110 124" stroke="#43a047" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="46" cy="107" r="7" fill="#1e88e5"/><circle cx="154" cy="107" r="7" fill="#1e88e5"/><rect x="62" y="154" width="76" height="52" rx="16" fill="url(#bb)"/><path d="M104 160 L90 183 L99 183 L94 201 L113 177 L104 177 Z" fill="#fb8c00"/><rect x="40" y="160" width="18" height="34" rx="9" fill="#2a2d31" stroke="#1e88e5" stroke-width="2"/><rect x="142" y="160" width="18" height="34" rx="9" fill="#2a2d31" stroke="#1e88e5" stroke-width="2"/></svg></span><span>SmartBlitz<sup style="font-size:11px;color:var(--blue);margin-left:2px">AI</sup> <small style="font-weight:500;font-size:13px;color:var(--muted);margin-left:4px">for JMeter</small></span></div>
   <nav class="links" aria-label="Sections">
@@ -354,6 +358,31 @@ footer a{color:var(--muted)}
 </div></footer>
 
 <script>
+(function(){
+  var c=document.getElementById('bgfx');if(!c||!c.getContext)return;
+  var x=c.getContext('2d'),W,H,dpr=Math.min(window.devicePixelRatio||1,2),N=[],B=[],raf,
+  reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,
+  C=['30,136,229','67,160,71','251,140,0'];
+  function resize(){W=innerWidth;H=innerHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.max(22,Math.min(60,Math.round(W*H/22000)));N=[];
+    for(var i=0;i<n;i++)N.push({x:Math.random()*W,y:Math.random()*H,r:1.2+Math.random()*1.8,vx:.15+Math.random()*.45,vy:(Math.random()-.5)*.15,c:C[i%3==0?1:i%7==0?2:0]});}
+  function bolt(b){x.save();x.translate(b.x,b.y);x.scale(b.s,b.s);x.globalAlpha=b.a;x.fillStyle='rgb(251,140,0)';
+    x.beginPath();x.moveTo(2,-12);x.lineTo(-6,2);x.lineTo(-1,2);x.lineTo(-3,12);x.lineTo(6,-3);x.lineTo(1,-3);x.closePath();x.fill();x.restore();}
+  function frame(){
+    x.clearRect(0,0,W,H);
+    for(var i=0;i<N.length;i++){var p=N[i];
+      for(var j=i+1;j<N.length;j++){var q=N[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<150){x.strokeStyle='rgba('+p.c+','+(.2*(1-d/150))+')';x.lineWidth=1;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke();}}}
+    for(i=0;i<N.length;i++){p=N[i];if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x>W+20){p.x=-20;p.y=Math.random()*H;}if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20;}
+      x.fillStyle='rgba('+p.c+',.55)';x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill();}
+    if(!reduce){if(Math.random()<.004&&B.length<3)B.push({x:Math.random()*W,y:Math.random()*H,s:1.2+Math.random()*1.6,a:0,t:0});
+      for(i=B.length-1;i>=0;i--){var b=B[i];b.t++;b.a=Math.sin(b.t/60*Math.PI)*.22;if(b.t>=60){B.splice(i,1);continue;}bolt(b);}}
+    else{for(i=0;i<4;i++)bolt({x:(i+1)*W/5,y:H*(.25+.15*i),s:2,a:.12});}
+    if(!reduce)raf=requestAnimationFrame(frame);}
+  resize();frame();
+  addEventListener('resize',function(){resize();if(reduce)frame();});
+  document.addEventListener('visibilitychange',function(){if(reduce)return;if(document.hidden)cancelAnimationFrame(raf);else raf=requestAnimationFrame(frame);});
+})();
 (function(){
   var lb=document.getElementById('lb'),li=document.getElementById('lbimg');
   document.querySelectorAll('.shot button').forEach(function(b){
