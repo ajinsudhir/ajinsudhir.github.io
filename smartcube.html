@@ -117,6 +117,7 @@ video { display: block; width: 100%; height: auto; border-radius: 6px; backgroun
 .steps li::before { content: counter(s); font: 600 28px var(--mono); color: var(--accent); }
 .steps code, p code { font: 14px var(--mono); background: var(--accent-soft); color: var(--ink); padding: 1px 6px; border-radius: 4px; }
 .get { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; background: var(--accent-soft); border-radius: var(--r); padding: 18px 20px; }
+.req { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 .get .link { font: 14px var(--mono); color: var(--ink); word-break: break-all; }
 
 /* faq */
@@ -161,7 +162,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       <p class="lead">SmartCUBE troubleshoots, compares and right-sizes Kubernetes workloads – and the databases, Kafka and Camunda behind them – using the access you already have.</p>
       <span class="crumb">Kubernetes › Workloads › Deployment Scaler · perf @ cluster</span>
       <div class="cta">
-        <a class="btn primary" href="#start">Get SmartCUBE</a>
+        <a class="btn primary" href="#start">Request access</a>
         <a class="btn ghost" href="#roles">See what it does</a>
       </div>
       <p class="note" style="margin-top:12px">Windows · Java included · no server, nothing installed in the cluster</p>
@@ -257,20 +258,25 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   <section id="start">
     <div class="wrap">
       <p class="eyebrow">Get started</p>
-      <h2>Running in about ten minutes</h2>
+      <h2>Request access, running in about ten minutes</h2>
       <ol class="steps">
-        <li><h3>Download</h3><p>Get the Windows zip (link below). Java is included.</p></li>
+        <li><h3>Request</h3><p>Send an access request (below). You get the Windows zip once it is approved. Java is included.</p></li>
         <li><h3>Unzip &amp; start</h3><p>Unzip to <code>C:\Tools\SmartCUBE</code> and double-click <code>SmartCUBE.exe</code>.</p></li>
         <li><h3>Connect</h3><p>Make sure <code>kubectl</code> works, then add your environments in Settings.</p></li>
         <li><h3>Explore</h3><p>Press <code>Ctrl+K</code> to find any screen; Help › User Guide covers the rest.</p></li>
       </ol>
       <div class="get">
-        <div style="flex:1;min-width:0">
-          <p><b style="color:var(--ink)">Download:</b> <span class="link" id="dl">[SharePoint / Teams link to SmartCUBE-2026.1-windows.zip]</span></p>
-          <p class="note" style="margin-top:4px">Questions and ideas: [Teams channel] · Tip: start in read-only mode while you learn.</p>
+        <div style="flex:1;min-width:240px">
+          <p><b style="color:var(--ink)">Request access</b></p>
+          <p class="note" style="margin-top:4px">Tell us who you are and where you will use it. Tip: start in read-only mode while you learn.</p>
         </div>
-        <button class="btn primary" id="copy" type="button">Copy link</button>
+        <div class="req">
+          <a class="btn primary" id="req-mail" href="#">Request by email</a>
+          <a class="btn ghost" id="req-teams" href="#" hidden>Message on Teams</a>
+          <button class="btn ghost" id="copy" type="button">Copy request text</button>
+        </div>
       </div>
+      <details style="margin-top:14px"><summary>Preview of the request</summary><p id="req-preview" style="white-space:pre-line;font:14px var(--mono);margin-top:10px"></p></details>
     </div>
   </section>
 
@@ -279,11 +285,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       <p class="eyebrow">FAQ</p>
       <h2>Common questions</h2>
       <div class="faq">
+        <details><summary>How do I get SmartCUBE?</summary><p>Use <b>Request access</b> in Get started. It opens an email with the details filled in, or you can copy the same text into Teams or any other channel. After approval you receive the download and install notes directly.</p></details>
         <details><summary>Does anything get installed in the cluster?</summary><p>No. SmartCUBE runs on your laptop and uses <code>kubectl</code> and your own database accounts.</p></details>
         <details><summary>Is it safe to use on production?</summary><p>Start in read-only mode: every change is blocked. Changes on production clusters always ask for confirmation and are written to the audit log.</p></details>
         <details><summary>What goes to the AI?</summary><p>Only what you send with Ask AI, shown in a preview first, to the AI you choose – Gemini CLI or Claude Code – under your own account.</p></details>
         <details><summary>Do I need admin rights or Java?</summary><p>No. Unzip and run; Java is bundled. Keep the folder somewhere you can write to, not <i>Program Files</i>.</p></details>
-        <details><summary>Who supports it?</summary><p>[Name / team]. Post questions and requests in [Teams channel].</p></details>
+        <details><summary>Who supports it?</summary><p>Ajin Sudhir. Send questions and requests through Request access.</p></details>
       </div>
     </div>
   </section>
@@ -344,13 +351,19 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     });
   });
   show("t-sre");
+  /* ---- Access request: edit these two values ---- */
+  var REQUEST_EMAIL = "traj279@gmail.com";   /* where requests go (change to your work address if preferred) */
+  var TEAMS_LINK = "";                       /* optional: Teams chat/channel link; leave empty to hide the button */
+  var subject = "SmartCUBE AI access request";
+  var body = "Hi Ajin,\n\nI would like access to SmartCUBE AI.\n\nName:\nTeam / project:\nEnvironments I will use it on (e.g. perf, UAT):\nWhat I want to use it for:\n\nThanks,";
+  document.getElementById("req-mail").href = "mailto:" + REQUEST_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  document.getElementById("req-preview").textContent = "To: " + REQUEST_EMAIL + "\nSubject: " + subject + "\n\n" + body;
+  if (TEAMS_LINK) { var tl = document.getElementById("req-teams"); tl.href = TEAMS_LINK; tl.hidden = false; }
   document.getElementById("copy").addEventListener("click", function () {
-    var text = document.getElementById("dl").textContent, b = this;
-    function done(msg) { b.textContent = msg; setTimeout(function () { b.textContent = "Copy link"; }, 1800); }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () { done("Copied"); }, function () { select(); done("Press Ctrl+C"); });
-    } else { select(); done("Press Ctrl+C"); }
-    function select() { var r = document.createRange(); r.selectNodeContents(document.getElementById("dl")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    var text = "Subject: " + subject + "\n\n" + body, b = this;
+    function done(msg) { b.textContent = msg; setTimeout(function () { b.textContent = "Copy request text"; }, 1800); }
+    function fallback() { var t = document.createElement("textarea"); t.value = text; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done("Copied"); } catch (e) { done("Press Ctrl+C"); } document.body.removeChild(t); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done("Copied"); }, fallback); else fallback();
   });
 })();
 </script>
